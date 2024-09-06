@@ -15,7 +15,7 @@ func main() {
 	// преобразование входных данных в арабские числа
 	a, err := strconv.Atoi(input1)
 	if err != nil {
-		a, err = romeToArab(strings.ToUpper(input1))
+		a, err = romeToArab(input1)
 		if err != nil {
 			fmt.Println("ошибка:", err)
 			return
@@ -24,7 +24,7 @@ func main() {
 
 	b, err := strconv.Atoi(input2)
 	if err != nil {
-		b, err = romeToArab(strings.ToUpper(input2))
+		b, err = romeToArab(input2)
 		if err != nil {
 			fmt.Println("ошибка:", err)
 			return
