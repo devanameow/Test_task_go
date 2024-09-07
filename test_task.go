@@ -17,8 +17,7 @@ func main() {
 	if err != nil {
 		a, err = romeToArab(input1)
 		if err != nil {
-			fmt.Println("ошибка:", err)
-			return
+			panic("ошибка в первой переменной")
 		}
 	}
 
@@ -26,26 +25,24 @@ func main() {
 	if err != nil {
 		b, err = romeToArab(input2)
 		if err != nil {
-			fmt.Println("ошибка:", err)
-			return
+			panic("ошибка во второй переменной")
 		}
 	}
 
-	result, err := calc(a, b, action)
-	if err != nil {
-		fmt.Println("ошибка:", err)
-		return
-	}
+	result := calc(a, b, action)
 
 	if isRome(input1) && isRome(input2) {
-		fmt.Println("Результат:", arabToRome(result))
+		if result >= 1 {
+			fmt.Println("Результат:", arabToRome(result))
+		} else {
+			panic("pначение не может быть меньше нуля")
+		}
 	} else if isArab(input1) && isArab(input2) {
 		fmt.Println("Результат:", result)
 	} else {
 		fmt.Println("ошибка")
 	}
 }
-
 // функция перевода из римских в арабские
 
 func romeToArab(s string) (int, error) {
@@ -89,22 +86,22 @@ func arabToRome(num int) string {
 
 // функция калькулятора
 
-func calc(a, b int, action string) (int, error) {
+func calc(a, b int, action string) int {
 	if a >= 1 && a <= 10 && b >= 1 && b <= 10 {
 		switch action {
 		case "+":
-			return a + b, nil
+			return a + b
 		case "-":
-			return a - b, nil
+			return a - b
 		case "*":
-			return a * b, nil
+			return a * b
 		case "/":
-			return a / b, nil
+			return a / b
 		default:
-			return 0, errors.New("неизвестный оператор")
+			panic("неизвестный оператор")
 		}
 	} else {
-		return 0, errors.New("неверный диапозон")
+		panic("неверный диапозон")
 	}
 }
 
