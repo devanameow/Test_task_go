@@ -35,7 +35,7 @@ func main() {
 		if result >= 1 {
 			fmt.Println("Результат:", arabToRome(result))
 		} else {
-			panic("pначение не может быть меньше нуля")
+			panic("значение не может быть меньше нуля")
 		}
 	} else if isArab(input1) && isArab(input2) {
 		fmt.Println("Результат:", result)
